@@ -1,0 +1,10 @@
+{
+     "checkType": "DB_CHECK",
+     "checkDesc": "检查 更新结果正确性",
+     "checkSqlQuery": "select last_name from Person where first_name='Phillip' ",
+     "checkExpectedData": [
+          {
+               "last_name": "Webb"
+          }
+     ]
+}
