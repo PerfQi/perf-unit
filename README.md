@@ -2,7 +2,7 @@
 ## 项目概述
 项目的设计思想和结构主要参考杭州有赞公司的这篇文章 [有赞单元测试实践](https://tech.youzan.com/youzan-test-practice/)，基于junit4进行二次开发。
 ### 数据库层
-![有赞单云测试实践](/Users/huayongqi694/coding/perf-unit/README.assets/有赞单云测试实践.png)
+![有赞单云测试实践](./assets/test.png)
 如上图，perf-unit框架的将单元测试数据库统一成springtest+dbunit+h2的结构，数据源文件支持xml/csv/excel三种格式，通过@SecTest注解引入。perf-unit的主要创新点是引入了动态数据源，让有依赖数据库层的测试用例也支持并发执行。
 ```java
  @Test
