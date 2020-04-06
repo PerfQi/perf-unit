@@ -21,7 +21,6 @@ public class SecTestConfiguration {
     @Bean
     public DataSource dataSource() {
         SecTestRoutingDataSource dynamicRoutingDataSource = new SecTestRoutingDataSource();
-
         DataSource dataSource =  dataSourceProperties.initializeDataSourceBuilder().type(DriverManagerDataSource.class).build();
         dynamicRoutingDataSource.setDefaultTargetDataSource(dataSource);// 设置默认数据源
         ConcurrentHashMap<Object, Object> map = new ConcurrentHashMap();

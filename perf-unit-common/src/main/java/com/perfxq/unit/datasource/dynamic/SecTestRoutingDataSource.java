@@ -26,9 +26,9 @@ public class SecTestRoutingDataSource extends AbstractRoutingDataSource {
             if (SecTestRoutingDataSource.isExistDataSource(database)){
                 return true;
             }
-
             ConcurrentHashMap<Object, Object> targetMap = SecTestRoutingDataSource.targetDataSources;
             targetMap.put(dbName, dataSource);
+            this.setTargetDataSources(targetMap);
             this.afterPropertiesSet();
         } catch (Exception e) {
             logger.error(e.getMessage(),e);

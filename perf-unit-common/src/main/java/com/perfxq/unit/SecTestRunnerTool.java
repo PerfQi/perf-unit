@@ -100,6 +100,7 @@ public class SecTestRunnerTool {
 
             List<Map<String, Object>> expectedData =  checkFileInfo.getCheckExpectedData();
             List<Map<String, Object>> result = jdbcTemplate.queryForList(checkFileInfo.getCheckSqlQuery());
+
             if (expectedData.size() != result.size()){
                 throw new Exception();
             }
@@ -113,8 +114,6 @@ public class SecTestRunnerTool {
                 rowBuilder.add();
             }
             IDataSet expectedDataSet = expectedDataBuilder.build();
-
-
             DataSetBuilder checkResultDataBuilder = new DataSetBuilder();
             for (Map<String, Object> rows:result){
                 DataRowBuilder rowBuilder = checkResultDataBuilder.newRow("CheckResultDataTb");

@@ -1,6 +1,8 @@
 package com.perfxq.unit.runner;
 
 import com.perfxq.unit.exception.MultiException;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.junit.runners.model.RunnerScheduler;
 
 import java.util.Deque;
@@ -12,6 +14,7 @@ import java.util.concurrent.ForkJoinWorkerThread;
 import static java.util.concurrent.ForkJoinTask.inForkJoinPool;
 
 public class ParallelForkedScheduler implements RunnerScheduler {
+    private static final Log log = LogFactory.getLog(ParallelForkedScheduler.class);
 
     static ForkJoinPool forkJoinPool = setUpForkJoinPool();
 
@@ -50,6 +53,7 @@ public class ParallelForkedScheduler implements RunnerScheduler {
                 _asyncTasks.addFirst(ForkJoinTask.adapt(_lastScheduledChild).fork());
             } else {
                 _asyncTasks.addFirst(forkJoinPool.submit(_lastScheduledChild));
+                log.info("the ParallelForkedScheduler asyncTasks:" + _asyncTasks.size());
             }
         }
         // Note: We don't schedule the childStatement immediately here,
